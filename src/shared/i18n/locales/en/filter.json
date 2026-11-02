@@ -1,0 +1,19 @@
+{
+	"eyebrow": "Test task",
+	"homeTitle": "WinWinTravel",
+	"homeSubtitle": "Choose accommodation filters and see the request payload update in real time.",
+	"open": "Filters",
+	"title": "Filter",
+	"close": "Close filter",
+	"apply": "Apply",
+	"clearAll": "Clear all parameters",
+	"confirmTitle": "Do you want to apply new filter",
+	"useOldFilter": "Use old filter",
+	"applyNewFilter": "Apply new filter",
+	"closeConfirm": "Close confirmation",
+	"currentTitle": "Selected filters",
+	"currentHint": "SearchRequestFilter — the payload that would be sent to the API",
+	"empty": "No filters selected yet. Press «Filters» to choose some.",
+	"loading": "Loading filters…",
+	"error": "Could not load filters. Please try again."
+}
