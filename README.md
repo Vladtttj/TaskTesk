@@ -91,3 +91,22 @@ Also, to see how the compiled version of the program looks, you can use the scri
 ```shell
 npm run preview
 ```
+
+## Implementation notes
+
+- **Data flow** — `filterData.json` is fetched through TanStack Query (`src/shared/api/filters/getFilters.ts`) and mapped to the `FilterItem` types. The modal works on a local draft, so changes are only committed to the Zustand store (`src/shared/store/filtersStore.ts`) after the user confirms in the dialog.
+- **Confirmation flow** — `Apply` opens a confirmation dialog. `Apply new filter` saves the draft as `SearchRequestFilter` to the global state and closes both dialogs; `Use old filter`, the close button and `Esc` dismiss it without changing the saved filters. Re-opening the modal pre-fills it from the store.
+- **Structure** — `src/pages/Home` renders the page and the debug JSON payload, `src/features/filter-modal` contains the modal, the group list and the confirmation dialog, and `src/shared` holds API types, i18n and the store.
+- **i18n** — all user-facing strings live in `src/shared/i18n/locales/en`; the layout is semantic (dialog roles, labelled groups, native checkboxes).
+- **Added technology** — `tw-animate-css` (dev dependency) provides the Tailwind animation utilities used by the modal. All other dependencies were already present in the template.
+- **Code quality** — ESLint, Prettier (import sorting) and a Husky + lint-staged pre-commit hook keep the code consistent; the GitHub Actions pipeline runs build, format check and lint on Node 20 and 22.
+
+### Scripts
+
+| Command                    | Description                    |
+| -------------------------- | ------------------------------ |
+| `npm run dev`              | Start the Vite dev server      |
+| `npm run build`            | Type-check and build to `dist` |
+| `npm run preview`          | Preview the production build   |
+| `npm run lint:all`         | Run ESLint with zero warnings  |
+| `npm run format:check:all` | Check Prettier formatting      |
